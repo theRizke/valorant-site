@@ -1,38 +1,500 @@
-.App {
-  text-align: center;
+@font-face {
+  font-family: Valorant;
+  src: url(./Valorant-Font.ttf);
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+@font-face {
+  font-family: Tungsten;
+  src: url(./Tungsten-Bold.ttf);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.body {
+  background: linear-gradient(to top, #839aff 0%, #243a5d 100%);
+  /* background: linear-gradient(to bottom, #6e529d 0%,#583aff 100%); */
+  height: 100vh;
+  margin: 0;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+a {
+  text-decoration: none;
+}
+
+.home-screen {
+  overflow: hidden; /* Hide scrollbars */
+}
+
+.bgvideo {
+  width: 100%;
+}
+
+.navigation {
+  padding: 10px;
+  height: 3vh;
+  min-width: 100vh;
+  margin: none;
+  cursor: pointer;
+
+  background-color: rgba(82, 82, 82, 0.5);
+  color: white;
+  border-bottom: 1px solid white;
+  box-shadow: 5px 0px grey;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  list-style: none;
+  text-transform: uppercase;
+}
+.navigation li {
+  display: flex;
+  width: 100%;
+  color: #e6e6e6;
+  text-decoration: none;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 500;
+}
+.navigation li:hover {
+  color: burlywood;
+}
+
+.agent-icon,
+.ab-icon {
+  width: 100px;
+  margin: 10px;
+  border: 2px solid white;
+  background-color: rgba(82, 82, 82, 0.3);
+}
+
+.ab-icon {
+  width: 80px;
+  padding: 5px;
+  margin: 5px;
+}
+
+.agent-icon:hover,
+.ab-icon:hover {
+  background-color: rgba(82, 82, 82, 0.8);
+}
+
+.agent-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  max-width: 100vw;
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 0 22vw;
+  margin: 0;
+}
+
+.agent-data {
+  display: flex;
+  flex-direction: row;
+  height: max-content;
+  align-self: center;
+  justify-self: center;
+}
+
+.left {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  width: 30vw;
+}
+
+.character-name {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  letter-spacing: 5px;
+}
+
+.character-displayname {
+  color: white;
+  font-size: 60px;
+  font-size: bold;
+  text-transform: uppercase;
+  font-family: Tungsten;
+}
+
+.role-icon {
+  margin: 20px;
+  width: 50px;
+}
+
+.character-description,
+.ability-description {
+  color: white;
+  font-weight: 500;
+  text-align: justify;
+  padding: 10px;
+}
+
+.abilities {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  border-top: 3px solid white;
+  padding-top: 20px;
+  margin-top: 20px;
+  width: 100%;
+}
+
+.ability-name {
+  color: white;
+  font-size: 30px;
+  font-weight: 700;
+  padding: 10px;
+  margin-top: 10px;
+  font-family: Tungsten;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+}
+
+.all-ability {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.agent-site {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: fit-content;
+}
+.map-div {
+  display: flex;
+  flex-direction: column-reverse;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: flex-start;
+  min-width: 99vw;
+  height: 94.7vh;
+  margin: 0;
+}
+
+.map-list {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  margin: 40px 0;
+  min-width: 99vw;
+  background-color: rgba(82, 82, 82, 0.6);
+  padding: 10px;
+  border-top: 2px solid white;
+  border-bottom: 2px solid white;
+}
+
+.map-name {
+  padding: 5px;
+  cursor: pointer;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  text-transform: uppercase;
+  color: rgb(192, 192, 192);
+  font-size: 40px;
+}
+
+.map-name:hover {
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.map-name-big {
+  cursor: pointer;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  text-transform: uppercase;
+  color: #fff;
+  font-size: 80px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.coordinates {
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  text-transform: uppercase;
+  color: #fff;
+  font-size: 20px;
+}
+
+.map-info {
+  padding-right: 200px;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-end;
+}
+
+.map-bg {
+  -webkit-mask-image: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    from(rgba(0, 0, 0, 1)),
+    to(rgba(0, 0, 0, 0))
+  );
+  mask-image: linear-gradient(to left, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+}
+
+.map-details {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.map-radar {
+  display: flex;
+  align-items: center;
+}
+
+.radar-img {
+  width: 700px;
+}
+
+.right {
+  display: flex;
+  align-items: flex-end;
+}
+
+.bust-portrait {
+  height: 60vh;
+  margin-bottom: -5px;
+  margin-left: -50px;
+}
+
+.weapons {
+  display: flex;
+  justify-content: center;
+  min-height: 94vh;
+}
+
+.weapons-subcat {
+  display: flex;
+  flex-direction: column;
+  min-height: 50vh;
+  justify-content: flex-start;
+}
+
+.weapons-subcat:first-of-type {
+  margin-right: 20px;
+  max-width: 20vh;
+}
+.weapon-categories {
+  display: flex;
+  flex-direction: column;
+  width: 96%;
+  margin: 5px;
+  cursor: default;
+}
+
+.weapon-item {
+  background-color: rgba(152, 255, 133, 0.452);
+  display: flex;
+  justify-content: center;
+  margin: 3px;
+
+  color: white;
+  font-size: 18px;
+  font-weight: 600;
+  text-transform: uppercase;
+  border-bottom: 1px solid white;
+}
+.weapon-img {
+  width: 100%;
+  max-height: 10vh;
+  display: flex;
+  justify-content: center;
+  padding: 15px 0;
+  margin: 5px;
+  transform: scaleX(-1);
+}
+
+.weapon-details:hover {
+  background-color: rgba(167, 167, 167, 0.4);
+  box-shadow: inset 0 0 10px #6affda69;
+}
+.weapon-pic {
+  object-fit: scale-down;
+  width: 75%;
+  padding: 12px 0;
+}
+.weapon-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 3px;
+  cursor: pointer;
+  background-color: rgba(82, 82, 82, 0.5);
+}
+
+.weapon-name {
+  width: 100%;
+  margin-left: 25px;
+
+  display: flex;
+  color: white;
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+
+
+.item-select{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  height: 80vh;
+}
+
+.item-select-items{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 2px solid rgba(161, 161, 161, 0.685);
+  
+}
+
+.item-select-items:hover{
+  border: 2px solid #e6e6e6;
+}
+
+.item-category-pic{
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.item-category-name{
+  font-family: Tungsten;
+  background-color: rgba(82, 82, 82, 0.5);
+  width: 100%;
+  color:#e6e6e6;
+  font-size: 36px;
+  text-transform: uppercase;
+  text-align: center;
+  cursor: pointer;
+}
+
+.sprays{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.spray-list{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  max-width: 100vw;
+  background-color: rgba(0, 0, 0, 0.3);
+  margin: 0;
+}
+.spray-icon{
+  margin: 10px;
+  border: 2px solid rgba(152, 255, 133, 0.452);
+  display: flex;
+  align-items: center;
+}
+
+.spray-icon:hover{
+  background-color: #e6e6e657;
+}
+.spray-icon img{
+  width: 100px;
+  padding: 2px;
+}
+
+.page-control{
+  display: flex;
+  justify-self: center;
+  flex-direction: row;
+  height: max-content;
+
+  color: white;
+  font-size: 24px;
+  background-color:  rgba(0, 0, 0, 0.3);
+  width: fit-content;
+  margin: 5px;
+}
+
+.page-back, .page-next{
+  font-weight: bold;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.page-back:hover, .page-next:hover{
+  background-color: #e6e6e657;
+}
+
+.page-number{
+  background-color:  #e6e6e62f;
+  cursor: default;
+  font-weight: bold;
+  padding: 10px 20px;
+}
+
+
+.spray-info{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.spray-name{
+  color: white;
+  font-size: 56px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  text-transform: uppercase;
+}
+
+
+
+
+/* appear - on page load */
+.fade-appear {
+  opacity: 0;
+  z-index: 1;
+}
+.fade-appear.fade-appear-active {
+  opacity: 1;
+  transition: opacity 1000ms linear;
+}
+
+/* enter */
+.fade-enter {
+  opacity: 0;
+  z-index: 1;
+}
+.fade-enter.fade-enter-active {
+  opacity: 1;
+  transition: opacity 5000ms linear 5000ms;
+}
+
+/* exit */
+.fade-exit {
+  opacity: 1;
+}
+.fade-exit.fade-exit-active {
+  opacity: 0;
+  transition: opacity 5000ms linear;
+}
+.fade-exit-done {
+  opacity: 0;
 }
