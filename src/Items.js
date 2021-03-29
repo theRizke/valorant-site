@@ -29,13 +29,14 @@ function Items() {
         <div className="item-category-name">Playercards</div>
        
       </div>
+      <Link to="/Items/Bundles">
       <div className="item-select-items">
         <div className="item-category-pic">
           <img src="https://media.valorant-api.com/playercards/df3adf8c-4fa3-5f57-544d-eabf8b68713d/largeart.png"/>
         </div>
         <div className="item-category-name">Bundles</div>
-        
       </div>
+      </Link>
     </div>
   );
 }

@@ -10,6 +10,7 @@ import Maps from './Maps';
 import Weapons from './Weapons';
 import Items from './Items';
 import ItemSprays from './ItemSprays';
+import ItemBundles from './ItemBundles';
 
 import AgentInfo from './Items';
 
@@ -29,6 +30,7 @@ function App() {
               <Route path="/Weapons" component={Weapons} />
               <Route path="/Items" exact component={Items} />
               <Route path="/Items/Sprays" component={ItemSprays} />
+              <Route path="/Items/Bundles" component={ItemBundles} />
             </Switch>
           </div>
         </Router>
