@@ -389,13 +389,13 @@ a {
   cursor: pointer;
 }
 
-.sprays{
+.sprays, .cards{
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.spray-list{
+.spray-list, .card-list{
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -405,19 +405,20 @@ a {
   background-color: rgba(0, 0, 0, 0.3);
   margin: 0;
 }
-.spray-icon{
+.spray-icon, .card-icon{
   margin: 10px;
   border: 2px solid rgba(152, 255, 133, 0.452);
   display: flex;
   align-items: center;
 }
 
-.spray-icon:hover{
+.spray-icon:hover, .card-icon:hover{
   background-color: #e6e6e657;
 }
-.spray-icon img{
+.spray-icon img, .card-icon img{
   width: 100px;
   height: 100px;
+  padding: 2px;
 }
 
 .page-control{
@@ -451,7 +452,7 @@ a {
 }
 
 
-.spray-info{
+.spray-info, .card-info{
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -464,7 +465,7 @@ a {
   border-radius: 5px;
 }
 
-.spray-name{
+.spray-name, .card-name{
   color: white;
   font-size: 56px;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
@@ -483,17 +484,21 @@ a {
 .item-bundle-list{
   display: flex;
   flex-flow: column;
-  justify-content: flex-start;
   overflow-y: scroll;
-  width: fit-content;
+  width: 18vw;
   height: 94vh;
+  align-items: center;
+  padding: 5px 20px;
 }
 
 .item-bundle-infos{
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  margin: 50px;
+  justify-content: flex-end;
+  min-width: 82vw;
+  height: 94vh;
+  background-repeat: no-repeat!important;
+  background-size: cover!important;
   
   
 }
@@ -504,9 +509,32 @@ a {
     "Lucida Sans", Arial, sans-serif;
   text-transform: uppercase;
   color: rgb(221, 221, 221);
-  font-size: 50px;
-  margin: 0;
+  font-size: 60px;
+  margin: 50px
 
+}
+
+.item-buddies{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 20px;
+  max-height: 90vh;
+  overflow-y: scroll;
+}
+.item-buddy-pic{
+  margin: 20px;
+  border: 2px solid white;
+  background-color:#e6e6e62f;
+  cursor: default;
+}
+
+.item-buddy-pic:hover{
+  background-color:#8b8b8b2f;
+}
+.item-buddy-pic img{
+  padding: 3px;
+  width: 128px;
 }
 
 .bundle-picture img{
@@ -515,11 +543,30 @@ a {
 .bundle-list-pic{
   margin: 10px;
   cursor: pointer;
+  color: white;
+  text-transform: uppercase;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size: 30px;
 }
 .bundle-list-pic img{
-  width: 200px;
-  height: 257px;
+  width: 100%;
 }
+
+.card-pic{
+  background: rgb(39, 39, 39);
+  margin-top: 10px;
+}
+
+.card-pic img{
+  width: 268px;
+}
+
+.page-name{
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size: 100px;
+  color: #ffd271;
+}
+
 /* appear - on page load */
 .fade-appear {
   opacity: 0;
@@ -558,12 +605,12 @@ a {
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: #f1f1f1; 
+  background: #f1f1f159; 
 }
  
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #888; 
+  background: rgb(82, 82, 82); 
 }
 
 /* Handle on hover */

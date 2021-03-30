@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import {Link} from 'react-router-dom';
 
 import './App.css';
 
@@ -31,7 +30,7 @@ function ItemBundles() {
   const[selectedBundles, selectBundle] = useState(defaultBundle);
 
   const backgroundCSS = {
-    background: `linear-gradient(to left, rgba(255,255,255,0) 5%,
+    background: `linear-gradient(to bottom, rgba(255,255,255,0) 10%,
     rgba(36, 58, 93, 1)), url('${selectedBundles.displayIcon}')`
   };
   
@@ -52,13 +51,13 @@ function ItemBundles() {
                 </div>
             ))}
        </div>
-       <div className="item-bundle-infos">
+       <div className="item-bundle-infos" style={backgroundCSS}>
             <div className="bundle-name">
                 {selectedBundles.displayName}
             </div>
-           <div className="bundle-picture">
+           {/* <div className="bundle-picture">
                 <img src={selectedBundles.displayIcon}/>
-           </div>
+           </div> */}
 
        </div>
       

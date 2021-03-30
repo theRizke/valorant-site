@@ -15,20 +15,23 @@ function Items() {
         
       </div>
       </Link>
+
+      <Link to="/Items/Gunbuddies">
       <div className="item-select-items">
         <div className="item-category-pic">
           <img src="https://media.valorant-api.com/playercards/e6a07a97-4c48-421f-515e-288379f7a5be/largeart.png"/>
           </div>
         <div className="item-category-name">Gunbuddies</div>
-        
       </div>
+      </Link>
+      <Link to='/Items/Playercards'>
       <div className="item-select-items">
         <div className="item-category-pic">
           <img src="https://media.valorant-api.com/playercards/c8c31580-4315-967b-998b-dfa377bb8843/largeart.png"/>
         </div>
         <div className="item-category-name">Playercards</div>
-       
       </div>
+      </Link>
       <Link to="/Items/Bundles">
       <div className="item-select-items">
         <div className="item-category-pic">

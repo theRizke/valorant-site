@@ -11,6 +11,8 @@ import Weapons from './Weapons';
 import Items from './Items';
 import ItemSprays from './ItemSprays';
 import ItemBundles from './ItemBundles';
+import ItemBuddies from './ItemBuddies';
+import ItemPlayercards from './ItemPlayercards';
 
 import AgentInfo from './Items';
 
@@ -31,6 +33,8 @@ function App() {
               <Route path="/Items" exact component={Items} />
               <Route path="/Items/Sprays" component={ItemSprays} />
               <Route path="/Items/Bundles" component={ItemBundles} />
+              <Route path="/Items/Gunbuddies" component={ItemBuddies} />
+              <Route path="/Items/Playercards" component={ItemPlayercards} />
             </Switch>
           </div>
         </Router>
