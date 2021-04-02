@@ -13,6 +13,7 @@ import ItemSprays from './ItemSprays';
 import ItemBundles from './ItemBundles';
 import ItemBuddies from './ItemBuddies';
 import ItemPlayercards from './ItemPlayercards';
+import ItemSkins from './ItemSkins';
 
 import AgentInfo from './Items';
 
@@ -35,6 +36,7 @@ function App() {
               <Route path="/Items/Bundles" component={ItemBundles} />
               <Route path="/Items/Gunbuddies" component={ItemBuddies} />
               <Route path="/Items/Playercards" component={ItemPlayercards} />
+              <Route path="/Items/Skins" component={ItemSkins} />
             </Switch>
           </div>
         </Router>
