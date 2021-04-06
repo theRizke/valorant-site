@@ -56,11 +56,11 @@ function Maps() {
     rgba(36, 58, 93, 1)), url('${maps[selectedMap].splash}')`
   };
   
-  
+  console.log(selectedMap);
   
 
   return (
-    <div className="map-div" style={backgroundCSS}>
+    <div key={selectedMap} className="map-div" style={backgroundCSS}>
       <div className="map-list">
         {maps.map((map) =>(
           <div className="maps" onClick={()=>{selectMap(uuidToID(map.uuid))}}> 

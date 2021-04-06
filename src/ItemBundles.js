@@ -40,6 +40,11 @@ function ItemBundles() {
     fetchBundles();
     selectBundle(defaultBundle);
   }, []);
+
+  const setBundleIcon = (bundle) =>{
+    if(bundle.verticalPromoImage){ return bundle.verticalPromoImage}
+    else {return bundle.displayIcon}
+  }
   
 
   return (
@@ -47,7 +52,7 @@ function ItemBundles() {
          <div className="item-bundle-list">
             {bundles.map(bundle => (
                 <div className="bundle-list-pic" onClick={() => {selectBundle(bundle)}}>
-                    <img src={bundle.verticalPromoImage} alt={bundle.displayName} srcset=""/>
+                    <img src={setBundleIcon(bundle)} alt={bundle.displayName} srcset=""/>
                 </div>
             ))}
        </div>
@@ -55,9 +60,6 @@ function ItemBundles() {
             <div className="bundle-name">
                 {selectedBundles.displayName}
             </div>
-           {/* <div className="bundle-picture">
-                <img src={selectedBundles.displayIcon}/>
-           </div> */}
 
        </div>
       

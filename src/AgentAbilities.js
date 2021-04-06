@@ -9,7 +9,6 @@ function AgentAbility(props) {
     const ability = props.data;
     
     const [abilityDESC, setabilityDESC] = useState(ability[4]);
-    console.log(abilityDESC);
     
     useEffect(() => { setabilityDESC(ability[0])}, [ability[0]]);
 
@@ -18,7 +17,7 @@ function AgentAbility(props) {
          
 
 
-        <div className="all-ability" >
+        <div key={ability[0].slot + ability[1].displayIcon} className="all-ability" >
         <div className="ability" onClick={() => {setabilityDESC(ability[0])}}>
             <img className='ab-icon' src={ability[0].displayIcon} ></img>
         </div>
@@ -32,7 +31,7 @@ function AgentAbility(props) {
             <img className='ab-icon' src={ability[3].displayIcon} ></img>
         </div>
         </div>
-        <div className="ability-desc">
+        <div key={abilityDESC.displayName} className="ability-desc">
             <div className="ability-name">
                 {abilityDESC.displayName}
             </div>

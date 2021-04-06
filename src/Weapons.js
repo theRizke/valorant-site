@@ -6,78 +6,22 @@ import "./App.css";
 
 function Weapons() {
 
-  const defaultValue = {
-      "uuid": "63e6c2b6-4a8e-869c-3d4c-e38355226584",
-      "displayName": "Odin",
-      "category": "EEquippableCategory::Heavy",
-      "defaultSkinUuid": "f454efd1-49cb-372f-7096-d394df615308",
-      "displayIcon": "https://media.valorant-api.com/weapons/63e6c2b6-4a8e-869c-3d4c-e38355226584/displayicon.png",
-      "killStreamIcon": "https://media.valorant-api.com/weapons/63e6c2b6-4a8e-869c-3d4c-e38355226584/killstreamicon.png",
-      "assetPath": "ShooterGame/Content/Equippables/Guns/HvyMachineGuns/HMG/HMGPrimaryAsset",
-      "weaponStats": {
-        "fireRate": 12,
-        "magazineSize": 100,
-        "runSpeedMultiplier": 0.76,
-        "equipTimeSeconds": 1.25,
-        "reloadTimeSeconds": 5,
-        "firstBulletAccuracy": 0.8,
-        "shotgunPelletCount": 1,
-        "wallPenetration": "EWallPenetrationDisplayType::High",
-        "feature": "EWeaponStatsFeature::ROFIncrease",
-        "fireMode": null,
-        "altFireType": "EWeaponAltFireDisplayType::ADS",
-        "adsStats": {
-          "zoomMultiplier": 1.15,
-          "fireRate": 15.6,
-          "runSpeedMultiplier": 0.76,
-          "burstCount": 1,
-          "firstBulletAccuracy": 0.79
-        },
-        "altShotgunStats": null,
-        "airBurstStats": null,
-        "damageRanges": [
-          {
-            "rangeStartMeters": 0,
-            "rangeEndMeters": 30,
-            "headDamage": 95,
-            "bodyDamage": 38,
-            "legDamage": 32.3
-          },
-          {
-            "rangeStartMeters": 30,
-            "rangeEndMeters": 50,
-            "headDamage": 77.5,
-            "bodyDamage": 31,
-            "legDamage": 26.35
-          }
-        ]
-      },
-      "shopData": {
-        "cost": 3200,
-        "category": "Heavy Weapons",
-        "categoryText": "Heavy Weapons",
-        "gridPosition": {
-          "row": 2,
-          "column": 2
-        },
-        "image": "https://media.valorant-api.com/weapons/63e6c2b6-4a8e-869c-3d4c-e38355226584/shop/image.png",
-        "newImage": "https://media.valorant-api.com/weapons/63e6c2b6-4a8e-869c-3d4c-e38355226584/shop/newimage.png",
-        "newImage2": "https://media.valorant-api.com/weapons/63e6c2b6-4a8e-869c-3d4c-e38355226584/shop/newimage2.png",
-        "assetPath": "ShooterGame/Content/Equippables/Guns/HvyMachineGuns/HMG/HeavyMachineGunPurchase"
-      }};
-  
+ 
 
 
-  const [weaponSidearm, setSidearm] = useState([defaultValue]);
-  const [weaponSMG, setSMG] = useState([defaultValue]);
-  const [weaponShotgun, setShotgun] = useState([defaultValue]);
-  const [weaponRifle, setRifle] = useState([defaultValue]);
-  const [weaponHeavy, setHeavy] = useState([defaultValue]);
-  const [weaponSniper, setSniper] = useState([defaultValue]);
+  const [weaponSidearm, setSidearm] = useState([]);
+  const [weaponSMG, setSMG] = useState([]);
+  const [weaponShotgun, setShotgun] = useState([]);
+  const [weaponRifle, setRifle] = useState([]);
+  const [weaponHeavy, setHeavy] = useState([]);
+  const [weaponSniper, setSniper] = useState([]);
 
-  const [selectedWeapon, setWeapon] = useState(defaultValue);
+  const [selectedWeapon, setWeapon] = useState();
   
-  
+  useEffect(()=>{
+    fetchWeapons();
+
+  },[])
  
 
 
@@ -133,6 +77,8 @@ function Weapons() {
   }
 
   const loadWeaponData = (data) =>{
+
+    if(data){
     return(
     <div className="weapon-data-details" >
       <div className="weapon-data-img">
@@ -158,11 +104,9 @@ function Weapons() {
     </div>
   
     )
-          
+        } 
 }
-useEffect(()=>{fetchWeapons();
 
-},[])
   
   return (
     <div className="weapons">
@@ -170,35 +114,35 @@ useEffect(()=>{fetchWeapons();
       <div className="weapons-subcat">
         <div className="weapon-categories">
          <div className="weapon-item">Sidearm</div>
-            {weaponSidearm.slice(1).map( weapon => ( loadWeapon(weapon) ))}
+            {weaponSidearm.map( weapon => ( loadWeapon(weapon) ))}
         </div>
       </div>
 
       <div className="weapons-subcat">
         <div className="weapon-categories">
          <div className="weapon-item">Shotguns</div>
-            {weaponShotgun.slice(1).map( weapon => ( loadWeapon(weapon) ))}
+            {weaponShotgun.map( weapon => ( loadWeapon(weapon) ))}
         </div>
         <div className="weapon-categories">
         <div className="weapon-item">SMGS</div>
-            {weaponSMG.slice(1).map( weapon => ( loadWeapon(weapon) ))}
+            {weaponSMG.map( weapon => ( loadWeapon(weapon) ))}
         </div>
       </div>
 
       <div className="weapons-subcat">
       <div className="weapon-categories">
          <div className="weapon-item">Rifles</div>
-            {weaponRifle.slice(1).map( weapon => ( loadWeapon(weapon) ))}
+            {weaponRifle.map( weapon => ( loadWeapon(weapon) ))}
       </div>
       </div>
       <div className="weapons-subcat">
       <div className="weapon-categories">
          <div className="weapon-item">Heavy</div>
-            {weaponHeavy.slice(1).map( weapon => ( loadWeapon(weapon) ))}
+            {weaponHeavy.map( weapon => ( loadWeapon(weapon) ))}
       </div>
       <div className="weapon-categories">
          <div className="weapon-item">Sniper</div>
-            {weaponSniper.slice(1).map( weapon => ( loadWeapon(weapon) ))}
+            {weaponSniper.map( weapon => ( loadWeapon(weapon) ))}
       </div>
       </div>
       <div className="weapons-subcat">
