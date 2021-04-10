@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import {Link} from 'react-router-dom';
+import Loader from "react-loader-spinner";
 
+import "./button.css";
 import "./App.css";
 
 
@@ -20,20 +22,18 @@ function Weapons() {
   
   useEffect(()=>{
     fetchWeapons();
-
+    
   },[])
  
 
 
   const weaponMeelee = new Array();
-
+  const [isDone, IsDone] = useState(false);
 
   const fetchWeapons = async () => {
     const data = await fetch("https://valorant-api.com/v1/weapons");
     const weaponsRaw = await data.json();
-
     const weaponsArray = [weaponsRaw.data];
-    //setWeapon(weaponsArray);
 
     for (let i = 0; i < weaponsArray[0].length - 1; i++) {
       switch (weaponsArray[0][i].shopData.category) {
@@ -54,17 +54,46 @@ function Weapons() {
           break;
         case "SMGs":
           weaponSMG.push(weaponsArray[0][i]);
+        default:
+          weaponMeelee.push(weaponsArray[0][i]);
           break;
       }
+      
     }
+    sortByPrice(weaponShotgun); 
+    sortByPrice(weaponRifle);
+    sortByPrice(weaponSidearm);
+    sortByPrice(weaponSMG);
+    sortByPrice(weaponHeavy);
+    sortByPrice(weaponSniper);
+    setTimeout(() => IsDone(true), 1000);
+    ;
   };
+
+  //SORT BY PRICE
+
+  const sortByPrice = (data) => {
+    let m = data.length;
+    while (m > 1) {
+      for (let i = 0; i < data.length - 1; i++) {
+        if (data[i].shopData.cost > data[i + 1].shopData.cost) {
+          let temp = data[i];
+          data[i] = data[i + 1];
+          data[i + 1] = temp;
+        }
+      }
+      m--;
+    }
+    return;
+  };
+
+  
 
   const loadWeapon = (data) =>{
       return(
-        <div className="weapon-details" onClick={()=> setWeapon(data)} >
+        <div key={data.uuid} className="weapon-details" onMouseOver={()=> setWeapon(data)} >
         <div className="weapon-img">
           <img
-            key={data.uuid}
             className="weapon-pic"
             src={data.shopData.newImage}
           ></img>
@@ -80,10 +109,9 @@ function Weapons() {
 
     if(data){
     return(
-    <div className="weapon-data-details" >
+    <div key={data.uuid} className="weapon-data-details" >
       <div className="weapon-data-img">
         <img
-          key={data.uuid}
           className="weapon-data-pic"
           src={data.displayIcon}
         ></img>
@@ -99,15 +127,26 @@ function Weapons() {
             </div>))}   
       </div>
       <div className="button-skins">
-            <Link to={{ pathname: '/Items/Skins', state: selectedWeapon}}><button>SKINS</button></Link>
+              <div className="button-div">
+               <Link to={{ pathname: '/Items/Skins', state: selectedWeapon} } className="white">
+                <p>
+                  <span className="bg"></span>
+                  <span className="base"></span>
+                  <span className="text">SKINS</span>
+                </p>
+              
+            </Link>
+              </div>
           </div>
     </div>
   
     )
         } 
 }
-
-  
+  if(!isDone){
+    return (<div className="loading-div"><Loader type="Oval" color="#FFF" height={150} width={150} /></div>)
+  }
+  else{
   return (
     <div className="weapons">
 
@@ -150,6 +189,7 @@ function Weapons() {
       </div>
     </div>
   );
+}
 }
 
 export default Weapons;

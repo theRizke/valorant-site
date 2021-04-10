@@ -5,13 +5,13 @@ import './App.css';
 import AgentAbilities from './AgentAbilities';
 
 
-
 function AgentInfo(props) {
+  console.log(props);
+
   return (
     
     <div className="agent-data">
-      
-      <div className="left">
+      <div  className="left">
         <div key={props.data.displayName} className="character-name">
 
           <div className="character-role">

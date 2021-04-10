@@ -1,0 +1,49 @@
+Homescreen:
+    - fancy animations
+    - text
+
+Agents:
+    - fixing load animation on the left div
+    - selected agent, selected ability css
+
+Maps
+    * better animation *
+
+Weapons
+    - fix column's height
+    - add melee
+    - replace onmouseover to onclick or add skins button to the grid
+
+skins
+    - fix skinlist css
+    - fix skininfo css
+    - fix first time loading skin
+    - add animation
+    - replace back button
+
+Items
+    - loading animation
+
+Sprays
+    - load animation on spray
+    - load animation on spraylist
+    - selected spray css
+    - page number limit
+    * mousewheel eventlistener *
+
+Gunbuddies
+    - search for gunbuddy
+
+Playercards
+    - fix css
+    - loading animation
+    - selected gb css
+    - page number limit
+    * mousewheel eventlistener *
+
+Bundles
+ D   - loading animation  
+    * search for collection *
+
+*OVERALL*
+    clean code / structure

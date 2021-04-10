@@ -25,6 +25,17 @@ a {
   text-decoration: none;
 }
 
+.loading-div{
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size: 60px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  margin-top: 200px;
+}
+
 .home-screen {
   overflow: hidden; /* Hide scrollbars */
   animation-name: opacity-anim;
@@ -122,6 +133,11 @@ a {
   align-items: flex-start;
   justify-content: center;
   width: 30vw;
+  animation-name: opacity;
+  animation-iteration-count: 1;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+  animation-delay: 3s;
 
   
 }
@@ -133,9 +149,7 @@ a {
   align-items: center;
   letter-spacing: 5px;
 
-  animation-name: opacity-anim;
-  animation-iteration-count: 1;
-  animation-duration: 1s;
+
 
  
 }
@@ -322,15 +336,20 @@ a {
   height: 60vh;
   margin-bottom: -5px;
   margin-left: -50px;
+  opacity: 0;
 
   animation-name: character-up;
   animation-iteration-count: 1;
   animation-duration: 1s;
+  animation-fill-mode: forwards;
+  animation-delay: 1s;
+
 }
 
 .weapons {
   display: flex;
   min-height: 90vh;
+
 }
 
 .weapons-subcat {
@@ -422,14 +441,15 @@ a {
 .weapon-data-img{
   display: flex;
   justify-content: center;
+  align-items: center;
   object-fit: scale-down;
+  min-height: 400px;
 
 }
 .weapon-data-img img{
   
   max-width: 100%;
   max-height: 150px;
-  padding: 20vh 0;
   
 }
 
@@ -439,6 +459,10 @@ a {
   padding: 30px 10px;
   max-height: 50%;
   min-width: 20vh;
+
+  animation-name: opacity-anim;
+  animation-iteration-count: 1;
+  animation-duration: 1s;
 }
 
 .weapon-data-name{
@@ -601,7 +625,7 @@ a {
   flex-flow: column;
   overflow-y: scroll;
   width: 18vw;
-  height: 94vh;
+  height: 100%;
   align-items: center;
   padding: 5px 20px;
 }
@@ -614,8 +638,76 @@ a {
   height: 94vh;
   background-repeat: no-repeat!important;
   background-size: cover!important;
+
+  animation-name: opacity-bundle;
+  animation-iteration-count: 1;
+  animation-duration: 1.5s;
+}
+
+.item-bundle-left{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 94.8vh;
+}
+
+.item-bundle-search{
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row-reverse;
+  align-items: center;
+  border-bottom: 1px solid #e6e6e6;
+
+  width: 100%;
+  height: 40px;
   
-  
+  box-sizing: border-box;
+  padding: 5px 0;
+}
+
+.item-bundle-search input{
+  background-color: rgba(0, 0, 0, 0);
+  color: white;
+  border: none;
+  font-size: 24px;
+  width: 100%;
+  border-radius: 0;
+  margin: 0px 5px;
+  border-radius: 0;
+}
+
+.item-bundle-search input:active{
+  background-color: rgba(0, 0, 0, 0);
+  color: white;
+  border: none;
+  font-size: 24px;
+  width: 100%;
+  border-radius: 0;
+  margin: 0px 5px;
+  border-radius: 0;
+}
+
+.item-bundle-search #search-icon {
+  background-color: rgba(0, 0, 0, 0);
+  font-size: 18px;
+  color: white;
+  padding: 5px;
+  height: 28px;
+  width: 28px;
+}
+
+.bundles-load-div{
+  display: block;
+  position: absolute;
+  right: 40%;
+  top: 40%;
+  visibility: hidden;
+
+  animation-name: opacity-bundle;
+  animation-iteration-count: 1;
+  animation-direction: reverse;
+  animation-duration: 1.5s;
+
 }
 
 .bundle-name {
@@ -783,8 +875,9 @@ max-height: 30vh;
   font-weight: lighter;
   color:rgb(221, 221, 221);
   margin-bottom: 10vh;
-  
 }
+
+
 @keyframes opacity-anim {
   0%   { opacity: 0; }
   100% { opacity: 1; }
@@ -794,6 +887,13 @@ max-height: 30vh;
   0%   { opacity: 0; margin-left: 200px }
   100% { opacity: 1; margin-left: -50px}
 }
+
+@keyframes opacity-bundle {
+  0%   { opacity: 0; visibility: hidden;  }
+  50%   { opacity: 0; visibility: visible; }
+  100% { opacity: 1; visibility: visible; }
+}
+
 /* enter */
 .fade-enter {
   opacity: 0;
