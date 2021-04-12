@@ -22,28 +22,28 @@ skins
     - replace back button
 
 Items
-    - loading animation
+ D   - loading animation
 
 Sprays
-    - load animation on spray
-    - load animation on spraylist
+ D   - load animation on spray
+ D   - load animation on spraylist
     - selected spray css
-    - page number limit
+ D   - page number limit
     * mousewheel eventlistener *
 
 Gunbuddies
-    - search for gunbuddy
+D    - search for gunbuddy
 
 Playercards
-    - fix css
-    - loading animation
-    - selected gb css
-    - page number limit
+ D   - fix css
+ D   - loading animation
+    - selected pc css
+ D   - page number limit
     * mousewheel eventlistener *
 
 Bundles
- D   - loading animation  
-    * search for collection *
+ D   - loading animation
+ D   * search for collection *
 
 *OVERALL*
     clean code / structure

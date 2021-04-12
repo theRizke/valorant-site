@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Loader from "react-loader-spinner";
 
 import "./App.css";
 
@@ -29,13 +30,15 @@ function ItemSprays() {
   };
 
   const [sprays, setSprays] = useState([]);
-  const [site, setSite] = useState(0);
+  const [page, setPage] = useState(0);
   const [item, setItem] = useState([defaultItem]);
+  const [isLoaded, setLoaded] = useState(false);
 
   const fetchSprays = async () => {
     const data = await fetch("https://valorant-api.com/v1/sprays");
     const spraysRaw = await data.json();
     setSprays(spraysRaw.data);
+    setTimeout(() => setLoaded(true), 800);
   };
 
   const setCopy = () => {
@@ -46,7 +49,6 @@ function ItemSprays() {
   const backupArray = setCopy();
 
   const checkIsNull = (data) => {
-    console.log(data);
     if (data === null) {
       return "https://upload.wikimedia.org/wikipedia/commons/1/15/No_image_available_600_x_450.svg";
     } else {
@@ -59,47 +61,67 @@ function ItemSprays() {
     setItem(defaultItem);
   }, []);
 
-  return (
-    <div className="sprays">
-      <div className="spray-info">
-        <div className="spray-pic">
-          <img src={checkIsNull(item.fullTransparentIcon)} />
-        </div>
-        <div className="spray-name">{item.displayName}</div>
-      </div>
-      <div className="spray-list">
-        {sprays.slice([site], [site + 13]).map((spray) => (
-          <div className="spray-icon" onClick={() => setItem(spray)}>
-            <img src={spray.displayIcon} />
+
+  if (isLoaded) {
+    return (
+      <div className="sprays">
+        <div className="spray-info">
+          <div className="spray-name">{item.displayName}</div>
+          <div className="spray-pic">
+            <img
+              key={item.displayName}
+              src={checkIsNull(item.fullTransparentIcon)}
+            />
           </div>
-        ))}
+        </div>
+        <div key={"page" + page} className="spray-list">
+          {sprays.slice([page * 13], [(page + 1) * 13]).map((spray) => (
+            <div className="spray-icon" onClick={() => setItem(spray)}>
+              <img src={spray.displayIcon} />
+            </div>
+          ))}
+        </div>
+
+        <div className="page-control">
+          <div
+            className="page-back"
+            onClick={() => {
+              setSprays(backupArray);
+              if (page > 0) {
+                setPage(page - 1);
+              } else {
+                setPage(0);
+              }
+            }}
+          >
+            -
+          </div>
+          <div className="page-number">
+            {Math.round(page + 1)} / {Math.round(sprays.length / 13)}
+          </div>
+          <div
+            className="page-next"
+            onClick={() => {
+              setSprays(backupArray);
+              if ((page + 1) * 13 > sprays.length) {
+                setPage(page);
+              } else {
+                setPage(page + 1);
+              }
+            }}
+          >
+            +
+          </div>
+        </div>
       </div>
-      <div className="page-control">
-        <div
-          className="page-back"
-          onClick={() => {
-            setSprays(backupArray);
-            setSite(site - 12);
-          }}
-        >
-          -
-        </div>
-        <div className="page-number">
-         
-          {Math.round(site / 12) + 1} / {Math.round(sprays.length / 12)}
-        </div>
-        <div
-          className="page-next"
-          onClick={() => {
-            setSprays(backupArray);
-            setSite(site + 12);
-          }}
-        >
-          +
-        </div>
+    );
+  } else {
+    return (
+      <div className="loading-div">
+        <Loader type="Oval" color="#FFF" height={150} width={150} />
       </div>
-    </div>
-  );
+    );
+  }
 }
 
 export default ItemSprays;

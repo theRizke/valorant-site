@@ -91,7 +91,7 @@ function ItemBundles() {
         </div>
          <div className="item-bundle-list">
             {bundles.map(bundle => (
-                <div className="bundle-list-pic" onClick={() => {selectBundle(bundle)}}>
+                <div className="bundle-list-pic" onMouseOver={() => {selectBundle(bundle)}}>
                     <img src={setBundleIcon(bundle)} title={bundle.displayName} srcset=""/>
                 </div>
             ))}
