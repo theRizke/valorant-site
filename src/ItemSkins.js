@@ -2,12 +2,11 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import "./App.css";
+import "./css/skins.css";
 
 function ItemSkins(props) {
-  const [selectedWeapon, selectWeapon] = useState(props.location.state);
-  const [selectedSkin, selectSkin] = useState(props.location.state.skins[0]);
-  const [selectedPreview, selectPreview] = useState(
-    props.location.state.skins[0].fullRender);
+
+  let randomDefaultSkin = Math.floor(Math.random()*props.location.state.skins.length);
 
   const getIcon = (skin) => {
     if (skin.chromas[0].fullRender) {
@@ -16,6 +15,10 @@ function ItemSkins(props) {
       return skin.displayIcon;
     }
   };
+  const [selectedWeapon, selectWeapon] = useState(props.location.state);
+  const [selectedSkin, selectSkin] = useState(props.location.state.skins[randomDefaultSkin]);
+  const [selectedPreview, selectPreview] = useState(
+    getIcon(props.location.state.skins[randomDefaultSkin]));
 
   const setVariant = (skin) => {
     if (skin.chromas.length > 1) {
@@ -24,7 +27,7 @@ function ItemSkins(props) {
           {skin.chromas.map((variant) => (
             <div
               className="item-skin-variant"
-              onClick={() => {
+              onMouseOver={() => {
                 selectPreview(variant.fullRender);
               }}
             >
@@ -34,30 +37,38 @@ function ItemSkins(props) {
         </div>
       );
     } else {
-      return;
+      return (<div className="item-skin-variants"><div class="no-variant"> No variants available</div></div>);
     }
   };
 
+  const setSelectedSkinStyle = (data) => {
+    if(data.uuid == selectedSkin.uuid){
+      return ({background: "rgba(255, 255, 255, 0.8)",
+      border: "2px solid darkgrey"})
+    }
+    else{return};
+  }
+
   return (
     <div className="item-skins">
-      <div className="item-skin-info">
+       <Link to="/Weapons">
+            <div className="back-button"> {"<<"} BACK </div>
+          </Link>
+      <div key={selectedSkin.displayName} className="item-skin-info">
          <div className="item-skin-info-name">
               {selectedSkin.displayName}
          </div>
-          <Link to="/Weapons">
-            <div className="back-button"> BACK </div>
-          </Link>
-        
+         
         <div className="item-skin-info-pic">
           <img src={selectedPreview} />
-        </div>
+        </div> 
         <div className="item-skin-info-variants">
             {setVariant(selectedSkin)}
-        </div>
-        
-            
+        </div>          
       </div>
+      
       <div className="item-skin-list">
+        <div className="skin-list">
         {selectedWeapon.skins.map((skin) => (
           <div
             className="item-skin"
@@ -65,10 +76,12 @@ function ItemSkins(props) {
               selectSkin(skin);
               selectPreview(getIcon(skin));
             }}
+            style={setSelectedSkinStyle(skin)}
           >
             <img src={getIcon(skin)} />
           </div>
         ))}
+        </div>
       </div>
     </div>
   );

@@ -1,18 +1,32 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import Loader from "react-loader-spinner";
 
 import './App.css';
+import './css/agents.css';
 import AgentAbilities from './AgentAbilities';
 
 
 function AgentInfo(props) {
-  console.log(props);
 
-  return (
+  const [isLoaded, setLoaded] = useState();
+
+  useEffect(()=>{
+    setLoaded(false)
+  },[])
+  
+
+  setTimeout(()=>{
+    setLoaded(true)
+  }, 500);
+
+
+
+  if(isLoaded){
+    return (
     
-    <div className="agent-data">
-      <div  className="left">
-        <div key={props.data.displayName} className="character-name">
+    <div key={props.data.displayName} className="agent-data">
+      <div className="left">
+        <div  className="character-name">
 
           <div className="character-role">
           <img className="role-icon" src={props.data.role.displayIcon}></img>
@@ -34,6 +48,13 @@ function AgentInfo(props) {
     </div>
   );
 }
+else {
+  return (
+    <div className="loading-div">
+      <Loader type="Oval" color="#FFF" height={150} width={150} />
+    </div>
+  );
+}
 
-
+}
 export default AgentInfo;

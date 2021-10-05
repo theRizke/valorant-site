@@ -1,0 +1,135 @@
+@font-face {
+  font-family: Valorant;
+  src: url(./Valorant-Font.ttf);
+}
+
+@font-face {
+  font-family: Tungsten;
+  src: url(./Tungsten-Bold.ttf);
+}
+
+.body {
+  /* background: linear-gradient(to top, #839aff 0%, #243a5d 100%); */
+  /* background: linear-gradient(to bottom, #6e529d 0%,#583aff 100%); */
+  background-image: url('./bg.jpg');
+  height: 100vh;
+  margin: 0;
+  overflow-x: hidden;
+  background-size: cover;
+  
+}
+
+a {
+  text-decoration: none;
+}
+
+.loading-div{
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size: 60px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  margin-top: 200px;
+}
+
+
+
+
+
+
+
+
+
+
+/* appear - on page load */
+.fade-appear {
+  opacity: 0;
+  z-index: 1;
+}
+.fade-appear.fade-appear-active {
+  opacity: 1;
+  transition: opacity 1000ms linear;
+}
+
+
+
+
+.back-button:hover{
+  color: #fbe5b6;
+}
+
+
+@keyframes opacity-anim {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+
+
+@keyframes item-anim {
+  0%   { opacity: 0; transform: translateY(150px);}
+  100% { opacity: 1; transform: translateY(0);}
+}
+
+@keyframes character-up {
+  0%   { opacity: 0; visibility: hidden; transform: translateX(150px);}
+  50%   { opacity: 0; visibility: visible; transform: translateX(75px);}
+  100% { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes opacity-bundle {
+  0%   { opacity: 0; visibility: hidden;  }
+  50%   { opacity: 0; visibility: visible; }
+  100% { opacity: 1; visibility: visible; }
+}
+
+@keyframes spray-anim {
+  0%   { opacity: 0; filter: blur(5px);}
+  100% { opacity: 1; filter: blur(0);}
+}
+
+
+
+/* enter */
+.fade-enter {
+  opacity: 0;
+  z-index: 1;
+}
+.fade-enter.fade-enter-active {
+  opacity: 1;
+  transition: opacity 5000ms linear 5000ms;
+}
+
+/* exit */
+.fade-exit {
+  opacity: 1;
+}
+.fade-exit.fade-exit-active {
+  opacity: 0;
+  transition: opacity 5000ms linear;
+}
+.fade-exit-done {
+  opacity: 0;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: rgb(82, 82, 82); 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #f1f1f159; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #f0f0f0; 
+}

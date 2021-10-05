@@ -1,25 +1,25 @@
 Homescreen:
-    - fancy animations
-    - text
+  D  - fancy animations
+  D  - text
 
 Agents:
-    - fixing load animation on the left div
-    - selected agent, selected ability css
+   - fixing load animation on the left div
+   - selected agent, selected ability css
 
 Maps
     * better animation *
 
 Weapons
-    - fix column's height
-    - add melee
-    - replace onmouseover to onclick or add skins button to the grid
+D    - fix column's height
+D    - add melee
+D    - replace onmouseover to onclick or add skins button to the grid
 
 skins
-    - fix skinlist css
-    - fix skininfo css
+ D   - fix skinlist css
+ D   - fix skininfo css
     - fix first time loading skin
-    - add animation
-    - replace back button
+ D   - add animation
+ D   - replace back button
 
 Items
  D   - loading animation

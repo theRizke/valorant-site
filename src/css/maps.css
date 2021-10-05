@@ -1,0 +1,267 @@
+.map-div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  min-width: 99vw;
+  height: 94.1vh;
+  margin: 0;
+  width: 100vw;
+  background-repeat: no-repeat !important;
+  background-position: top, bottom;
+  background-size: cover;
+  -webkit-animation-name: map-picture-move;
+          animation-name: map-picture-move;
+  -webkit-animation-duration: 3s;
+          animation-duration: 3s;
+  -webkit-animation-delay: 0s;
+          animation-delay: 0s;
+  -webkit-animation-iteration-count: 1;
+          animation-iteration-count: 1;
+}
+
+.map-list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  min-width: 20vw;
+  height: 100%;
+  background-color: rgba(18, 18, 18, 0.9);
+}
+
+.map-name {
+  padding: 5px;
+  cursor: pointer;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+  text-transform: uppercase;
+  color: silver;
+  font-size: 40px;
+}
+
+.map-name:hover {
+  color: white;
+}
+
+.map-name-big {
+  cursor: pointer;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+  text-transform: uppercase;
+  color: #fff;
+  font-size: 80px;
+}
+
+.coordinates {
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+  text-transform: uppercase;
+  color: #fff;
+  font-size: 20px;
+}
+
+.map-info {
+  height: 100%;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+}
+
+.map-bg {
+  -webkit-mask-image: -webkit-gradient(linear, right top, left top, from(black), to(rgba(0, 0, 0, 0)));
+  -webkit-mask-image: linear-gradient(to left, black, rgba(0, 0, 0, 0));
+          mask-image: -webkit-gradient(linear, right top, left top, from(black), to(rgba(0, 0, 0, 0)));
+          mask-image: linear-gradient(to left, black, rgba(0, 0, 0, 0));
+}
+
+.map-details {
+  width: 80vw;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+
+.map-radar {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  min-height: 100%;
+  width: 100%;
+  background-color: rgba(18, 18, 18, 0.801);
+  font-size: 3em;
+  font-weight: bold;
+  color: white;
+  left: 90%;
+  -webkit-transition: all 1s ease;
+  transition: all 1s ease;
+}
+
+.map-radar:hover {
+  -webkit-transition: all 1s ease;
+  transition: all 1s ease;
+  left: 0%;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.map-radar:hover .radar-img {
+  max-width: 100%;
+  -webkit-transition: all 2s ease;
+  transition: all 2s ease;
+}
+
+.map-radar:hover .map-radar-title {
+  display: none;
+}
+
+.map-radar-title {
+  margin: -2rem;
+  -webkit-transform: rotate(-90deg);
+          transform: rotate(-90deg);
+  opacity: 1;
+  -webkit-transition: opacity 1s ease;
+  transition: opacity 1s ease;
+}
+
+.radar-img {
+  max-width: 100%;
+  max-height: 100%;
+  -webkit-transition: max-width 2s ease;
+  transition: max-width 2s ease;
+}
+
+@media only screen and (max-width: 950px) {
+  .map-div {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    height: 100vh;
+    width: 100vw;
+    background-position: center !important;
+  }
+  .map-div .map-list {
+    border-top: 1px solid whitesmoke;
+    border-bottom: 1px solid whitesmoke;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    height: -webkit-fit-content;
+    height: -moz-fit-content;
+    height: fit-content;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    width: 100%;
+  }
+  .map-div .map-list .maps {
+    margin: 0 20px;
+    text-align: center;
+  }
+  .map-name {
+    font-size: 1.5rem;
+  }
+  .map-details {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    height: 100%;
+    width: 100%;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  .map-details .map-radar {
+    left: 0;
+    background: rgba(0, 0, 0, 0);
+    width: 100%;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+  }
+  .map-details .map-radar .radar-img {
+    max-width: 100%;
+  }
+  .map-details .map-radar:hover .radar-img {
+    max-width: 100%;
+  }
+  .map-details .map-radar-title {
+    display: none;
+    -webkit-transition: all 1s ease;
+    transition: all 1s ease;
+  }
+}
+
+@-webkit-keyframes map-picture-move {
+  0% {
+    background-position: 0 0, 0 0;
+  }
+  50% {
+    background-position: 0 0, 0 0;
+  }
+  100% {
+    background-position: 100vw 0, 0 0;
+  }
+}
+
+@keyframes map-picture-move {
+  0% {
+    background-position: 0 0, 0 0;
+  }
+  50% {
+    background-position: 0 0, 0 0;
+  }
+  100% {
+    background-position: 100vw 0, 0 0;
+  }
+}
+/*# sourceMappingURL=maps.css.map */

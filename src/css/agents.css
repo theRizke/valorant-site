@@ -1,0 +1,356 @@
+.agent-site {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+
+.agent-data {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  height: -webkit-max-content;
+  height: -moz-max-content;
+  height: max-content;
+  -ms-flex-item-align: center;
+      align-self: center;
+  justify-self: center;
+  height: 65vh;
+  -webkit-animation-name: opacity-anim;
+          animation-name: opacity-anim;
+  -webkit-animation-iteration-count: 1;
+          animation-iteration-count: 1;
+  -webkit-animation-duration: 2s;
+          animation-duration: 2s;
+}
+
+.agent-list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  max-width: 100vw;
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 0 22vw;
+  margin: 0;
+}
+
+.agent-icon {
+  width: 100px;
+  margin: 10px;
+  border: 2px solid white;
+  background-color: rgba(82, 82, 82, 0.3);
+}
+
+.agent-data .left {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 30vw;
+  -webkit-animation-name: opacity;
+          animation-name: opacity;
+  -webkit-animation-iteration-count: 1;
+          animation-iteration-count: 1;
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+  -webkit-animation-delay: 3s;
+          animation-delay: 3s;
+}
+
+.character-name {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  letter-spacing: 5px;
+  margin-top: 50px;
+  cursor: default;
+}
+
+.role-icon {
+  margin: 20px;
+  width: 50px;
+}
+
+.character-displayname {
+  color: white;
+  font-size: 60px;
+  font-size: bold;
+  text-transform: uppercase;
+  font-family: Tungsten;
+}
+
+.character-description,
+.ability-description {
+  color: white;
+  font-weight: 500;
+  text-align: justify;
+  padding: 10px;
+  min-height: 100px;
+  -webkit-animation-name: opacity-anim;
+          animation-name: opacity-anim;
+  -webkit-animation-iteration-count: 1;
+          animation-iteration-count: 1;
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s;
+}
+
+.character-description {
+  color: khaki;
+}
+
+.ab-icon {
+  width: 100px;
+  margin: 10px;
+  border: 2px solid white;
+  background-color: rgba(82, 82, 82, 0.3);
+}
+
+.ab-icon {
+  width: 80%;
+  padding: 5px;
+  margin: 5px;
+}
+
+.agent-icon:hover,
+.ab-icon:hover {
+  background-color: rgba(82, 82, 82, 0.8);
+}
+
+.selected-icon {
+  background-color: rgba(82, 82, 82, 0.8);
+}
+
+.ability-desc {
+  -webkit-animation-name: opacity-anim;
+          animation-name: opacity-anim;
+  -webkit-animation-iteration-count: 1;
+          animation-iteration-count: 1;
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s;
+  min-height: 250px;
+}
+
+.abilities {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  border-top: 3px solid white;
+  padding-top: 20px;
+  margin-top: 20px;
+  width: 100%;
+}
+
+.ability-name {
+  color: white;
+  font-size: 30px;
+  font-weight: 700;
+  padding: 10px;
+  margin-top: 10px;
+  font-family: Tungsten;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+}
+
+.all-ability {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-animation-name: opacity-anim;
+          animation-name: opacity-anim;
+  -webkit-animation-iteration-count: 1;
+          animation-iteration-count: 1;
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s;
+}
+
+.right {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+}
+
+.bust-portrait {
+  height: 600px;
+  margin-bottom: -5px;
+  margin-left: -50px;
+  opacity: 0;
+  -webkit-animation-name: character-up;
+          animation-name: character-up;
+  -webkit-animation-iteration-count: 1;
+          animation-iteration-count: 1;
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+  -webkit-animation-delay: 1s;
+          animation-delay: 1s;
+}
+
+@media only screen and (max-width: 950px) {
+  .agent-site {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: reverse;
+        -ms-flex-direction: column-reverse;
+            flex-direction: column-reverse;
+  }
+  .agent-data {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .agent-data .left {
+    width: 100vw;
+  }
+  .agent-data .character-name {
+    width: 100%;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
+  .agent-data .character-displayname {
+    font-size: calc(3vw + 3vh);
+    max-width: 100%;
+  }
+  .agent-data .character-description,
+  .agent-data .ability-description {
+    padding: 20px;
+    font-size: 1rem;
+  }
+  .agent-data .ability-desc {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .agent-data .ability-name {
+    margin: 10px;
+    font-size: 3rem;
+    text-align: center;
+  }
+  .agent-data .all-ability {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  .agent-data .ability {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  .agent-data .ab-icon {
+    min-width: 25%;
+    max-width: 50%;
+  }
+  .right {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  .right .bust-portrait {
+    width: 80vw;
+    height: 100%;
+    margin-bottom: -25px;
+    opacity: 1;
+    -webkit-animation: none;
+            animation: none;
+  }
+  .agent-list {
+    -ms-flex-wrap: nowrap;
+        flex-wrap: nowrap;
+    overflow-y: auto;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+    margin: 0;
+    padding: 5px;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .agent-list .agent-icon {
+    width: 20vw;
+  }
+}
+/*# sourceMappingURL=agents.css.map */

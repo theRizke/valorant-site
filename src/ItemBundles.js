@@ -5,7 +5,9 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons'
 
 
 
+
 import './App.css';
+import './css/items.css';
 
 
 function ItemBundles() {
@@ -22,6 +24,11 @@ function ItemBundles() {
 }
 
   const[bundles, setBundles] = useState([]);
+  const[bundlesLoaded, setBundlesLoaded] = useState(false);
+
+  const[selectedBundle, selectBundle] = useState([]);
+  const[selectedBundleLoaded, setSelectedBundleLoaded] = useState(false);
+  const[isLoaded, setLoaded] = useState(false);
 
  
   
@@ -32,7 +39,7 @@ function ItemBundles() {
     const bundle = [bundlesRaw.data];
     sortByName(bundle[0]);
     setBundles(bundle[0]);
-    console.log(bundle);
+    setBundlesLoaded(true);
   }
    
   const sortByName = (data) => {
@@ -50,8 +57,6 @@ function ItemBundles() {
     return;
   };
 
-  const[selectedBundles, selectBundle] = useState(defaultBundle);
-
   const searchBundle = (string) =>{
     if(string.length > 2){
       for(let i = 0; i < bundles.length; i++)
@@ -66,22 +71,44 @@ function ItemBundles() {
   }
 
   const backgroundCSS = {
-    background: `linear-gradient(to bottom, rgba(255,255,255,0) 10%,
-    rgba(36, 58, 93, 1)), url('${selectedBundles.displayIcon}')`
-  };
+     background: ` url('${selectedBundle.displayIcon}')`
+  }
   
-
-  
-  useEffect(() => {
-    fetchBundles();
-  }, []);
+  const checkSelectedStyle = (data) =>{
+    if(data.uuid == selectedBundle.uuid){
+      return ({border: "2px solid whitesmoke"})
+    }
+    else{return}
+  }
 
   const setBundleIcon = (bundle) =>{
     if(bundle.verticalPromoImage){ return bundle.verticalPromoImage}
     else {return bundle.displayIcon}
   }
-  
 
+  useEffect(() => {
+    fetchBundles();
+  }, []);
+
+  useEffect(() => {
+    if(bundlesLoaded){
+      let rndBundle = Math.floor(Math.random()*bundles.length)
+      selectBundle(bundles[rndBundle]);
+      setSelectedBundleLoaded(true);
+    }
+  }, [bundlesLoaded]);
+
+  useEffect(() => {
+    if(selectedBundleLoaded)
+    {
+    setLoaded(true);
+    }
+  }, [selectedBundleLoaded]);
+  
+  if (!isLoaded) {
+    return (<div className="loading-div"><Loader type="Oval" color="#FFF" height={150} width={150} /></div>)
+  }
+  else{
   return (
     <div className="item-bundles">
       <div className="item-bundle-left">
@@ -90,27 +117,28 @@ function ItemBundles() {
           <FontAwesomeIcon id="search-icon" icon={faSearch}/>
         </div>
          <div className="item-bundle-list">
+          
             {bundles.map(bundle => (
-                <div className="bundle-list-pic" onMouseOver={() => {selectBundle(bundle)}}>
-                    <img src={setBundleIcon(bundle)} title={bundle.displayName} srcset=""/>
+                <div className="bundle-list-pic" onClick={() => {selectBundle(bundle)}} >
+                    <img src={setBundleIcon(bundle)} title={bundle.displayName} srcset="" style={checkSelectedStyle(bundle)}/>
                 </div>
             ))}
        </div>
        </div>
       
-       <div key={selectedBundles.uuid} className="item-bundle-infos" style={backgroundCSS}>
+       <div key={selectedBundle.uuid} className="item-bundle-infos" style={backgroundCSS}>
             <div className="bundle-name">
-                {selectedBundles.displayName}
+                {selectedBundle.displayName}
             </div>
        </div>
-       <div key={selectedBundles.uuid + "loading"} className="bundles-load-div">
+       <div key={selectedBundle.uuid + "loading"} className="bundles-load-div">
          <Loader type="ThreeDots" color="#FFF" height={150} width={150} />
        </div>
 
     </div>
     
    
-  );
+  );}
 }
 
 export default ItemBundles;

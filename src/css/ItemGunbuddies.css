@@ -1,0 +1,110 @@
+.item-buddies {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: column-reverse;
+          flex-direction: column-reverse;
+  height: 94.5vh;
+  -webkit-box-align: space-between;
+      -ms-flex-align: space-between;
+          align-items: space-between;
+  -webkit-animation-name: opacity-anim;
+          animation-name: opacity-anim;
+  -webkit-animation-iteration-count: 1;
+          animation-iteration-count: 1;
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s;
+}
+
+.item-buddy-search {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  min-width: 300px;
+  background: #00000070;
+  height: 6vh;
+}
+
+.item-buddy-search-bar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: row-reverse;
+          flex-direction: row-reverse;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
+  font-size: 32px;
+  color: white;
+  border-top: 2px solid #e6e6e6;
+  padding: 10px 0;
+}
+
+.item-buddy-search input {
+  background-color: rgba(0, 0, 0, 0);
+  color: white;
+  border: none;
+  font-size: 24px;
+  border-radius: 0;
+  margin: 0px 5px;
+  border-radius: 0;
+}
+
+.item-buddy-list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 20px;
+  height: 100%;
+  overflow-y: scroll;
+}
+
+.item-buddy-pic {
+  margin: 20px;
+  border: 2px solid white;
+  background-color: #e6e6e62f;
+  cursor: default;
+}
+
+.item-buddy-pic:hover {
+  background-color: #8b8b8b2f;
+}
+
+.item-buddy-pic img {
+  padding: 3px;
+  width: 128px;
+}
+
+.item-buddy-search-result {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  overflow-y: auto;
+  width: 100%;
+}
+
+.item-buddy-search-result img {
+  width: 150px;
+  height: 150px;
+}
+/*# sourceMappingURL=ItemGunbuddies.css.map */

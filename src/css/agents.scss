@@ -1,0 +1,254 @@
+.agent-site {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  height: fit-content;
+}
+
+.agent-data {
+  display: flex;
+  flex-direction: row;
+  height: max-content;
+  align-self: center;
+  justify-self: center;
+  height: 65vh;
+
+  animation-name: opacity-anim;
+  animation-iteration-count: 1;
+  animation-duration: 2s;
+}
+
+.agent-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  max-width: 100vw;
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 0 22vw;
+  margin: 0;
+}
+
+.agent-icon {
+  width: 100px;
+  margin: 10px;
+  border: 2px solid white;
+  background-color: rgba(82, 82, 82, 0.3);
+}
+
+.agent-data .left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  width: 30vw;
+
+  animation-name: opacity;
+  animation-iteration-count: 1;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+  animation-delay: 3s;
+}
+
+.character-name {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  letter-spacing: 5px;
+  margin-top: 50px;
+  cursor: default;
+}
+
+.role-icon {
+  margin: 20px;
+  width: 50px;
+}
+
+.character-displayname {
+  color: white;
+  font-size: 60px;
+  font-size: bold;
+  text-transform: uppercase;
+  font-family: Tungsten;
+}
+
+.character-description,
+.ability-description {
+  color: white;
+  font-weight: 500;
+  text-align: justify;
+  padding: 10px;
+  min-height: 100px;
+  animation-name: opacity-anim;
+  animation-iteration-count: 1;
+  animation-duration: 1s;
+}
+
+.character-description{
+  color:khaki
+}
+
+.ab-icon {
+  width: 100px;
+  margin: 10px;
+  border: 2px solid white;
+  background-color: rgba(82, 82, 82, 0.3);
+}
+
+.ab-icon {
+  width: 80%;
+  padding: 5px;
+  margin: 5px;
+}
+
+.agent-icon:hover,
+.ab-icon:hover {
+  background-color: rgba(82, 82, 82, 0.8);
+}
+
+.selected-icon {
+  background-color: rgba(82, 82, 82, 0.8);
+}
+
+.ability-desc {
+  animation-name: opacity-anim;
+  animation-iteration-count: 1;
+  animation-duration: 1s;
+
+  min-height: 250px;
+}
+
+.abilities {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  border-top: 3px solid white;
+  padding-top: 20px;
+  margin-top: 20px;
+  width: 100%;
+}
+
+.ability-name {
+  color: white;
+  font-size: 30px;
+  font-weight: 700;
+  padding: 10px;
+  margin-top: 10px;
+  font-family: Tungsten;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+}
+
+.all-ability {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  animation-name: opacity-anim;
+  animation-iteration-count: 1;
+  animation-duration: 1s;
+}
+
+.right {
+  display: flex;
+  align-items: flex-end;
+}
+
+.bust-portrait {
+  height: 600px;
+  margin-bottom: -5px;
+  margin-left: -50px;
+  opacity: 0;
+
+  animation-name: character-up;
+  animation-iteration-count: 1;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+  animation-delay: 1s;
+}
+
+@media only screen and (max-width: 950px) {
+  .agent-site {
+    flex-direction: column-reverse;
+  }
+
+  .agent-data {
+    flex-direction: column;
+
+    .left {
+      width: 100vw;
+    }
+
+    .character-name {
+      width: 100%;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .character-displayname {
+      font-size: calc(3vw + 3vh);
+      max-width: 100%;
+    }
+
+    .character-description,
+    .ability-description {
+      padding: 20px;
+      font-size: 1rem;
+    }
+
+    .ability-desc {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .ability-name {
+      margin: 10px;
+      font-size: 3rem;
+      text-align: center;
+    }
+
+    .all-ability{
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .ability{
+      display: flex;
+      justify-content: center;
+    }
+
+    .ab-icon{
+      min-width: 25%;
+      max-width: 50%;
+    }
+
+  }
+
+  .right {
+    justify-content: center;
+
+    .bust-portrait {
+      width: 80vw;
+      height: 100%;
+      margin-bottom: -25px;
+      opacity: 1;
+      animation: none;
+    }
+  }
+
+  .agent-list {
+    flex-wrap: nowrap;
+    overflow-y: auto;
+    justify-content: flex-start;
+    margin: 0;
+    padding: 5px;
+    align-items: center;
+
+    .agent-icon {
+      width: 20vw;
+    }
+  }
+}

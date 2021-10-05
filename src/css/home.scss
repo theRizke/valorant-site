@@ -1,0 +1,76 @@
+.home-screen {
+    height: 94vh;
+    animation-name: opacity-anim;
+    animation-iteration-count: 1;
+    animation-duration: 1s;
+  }
+  
+.home-video{
+    z-index: 1;
+    max-height: 94vh;
+    object-fit: cover;
+    display: flex;
+    justify-content: center;
+    mask-image: 
+    linear-gradient(to left, transparent 10%, rgb(15, 15, 15) 50%, transparent 90%);
+  }
+
+  .home-logo{
+    position: absolute;
+    top: 25%;
+    left: 26%;
+    transform: translate(-100%, -100%);
+    width: 50vw;
+
+    animation-name: logo-up-down;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-timing-function: linear;
+    animation-duration: 10s;
+
+  }
+  
+  .home-logo svg{
+    fill: white;
+  }
+  .home-powered{
+    position: absolute;
+    bottom: 2vh;
+    left: 2vw;
+    font-size: 12px;
+    color:antiquewhite;
+  }
+
+  .bgvideo {
+    height: 94vh;
+  }
+
+  @keyframes logo-up-down {
+    0%   {  transform: translateY(-10vh);}
+    100% {  transform: translateY(-8vh);}
+  }
+
+  @media only screen and (max-width: 950px) {
+
+    .home-video{
+        mask-image: 
+            linear-gradient(to left, transparent 5%, rgb(15, 15, 15) 50%, transparent 95%);
+      }
+
+    .home-logo{
+        width: 70vw;
+        position: relative;
+        top: 20%;
+        left: 50%;
+        z-index: 1;
+        margin-bottom: -10vh;
+        svg{
+          transform: translate(-50%, -50%);
+        }
+    }
+    
+    .home-logo svg{
+        fill: rgb(184, 184, 184);
+
+  }
+  }

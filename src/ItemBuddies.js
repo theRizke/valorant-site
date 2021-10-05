@@ -4,22 +4,30 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
 import "./App.css";
+import "./css/ItemGunbuddies.css";
 
 function ItemBuddies() {
   const [buddies, setBuddies] = useState([]);
   const [isLoaded, setLoaded] = useState(false);
-
+  var allBudies;
   const [searchResult, setResult] = useState([]);
+
+
 
   const fetchBuddies = async () => {
     const data = await fetch("https://valorant-api.com/v1/buddies");
     const buddiesRaw = await data.json();
     setBuddies(buddiesRaw.data);
+    allBudies = buddiesRaw.data;
     setTimeout(() => setLoaded(true), 800);
   };
 
   const searchGunbuddy = (string) => {
+
+
+    
     if (string.length > 1) {
+      setResult([]);
       var result = [];
       for (let i = 0; i < buddies.length; i++) {
         let buddyname = buddies[i].displayName.toLowerCase().replace(/\s/g, "");
@@ -31,8 +39,10 @@ function ItemBuddies() {
           }
         }
       }
-      setResult(result);
+      setBuddies(result);
     }
+
+
   };
 
   useEffect(() => {
@@ -49,18 +59,10 @@ function ItemBuddies() {
               name="input-gunbuddy"
               id="input-gunbuddy"
               onInput={(e) => {
-                setResult([]);
                 searchGunbuddy(e.target.value);
               }}
             />
             <FontAwesomeIcon id="search-icon" icon={faSearch} />
-          </div>
-          <div className="item-buddy-search-result">
-            {searchResult.map((buddy) => (
-              <div className="item-buddy-pic">
-                <img src={buddy.displayIcon} title={buddy.displayName}></img>
-              </div>
-            ))}
           </div>
         </div>
         <div className="item-buddy-list">

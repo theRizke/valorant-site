@@ -2,51 +2,59 @@ import React, { useState, useEffect } from "react";
 import Loader from "react-loader-spinner";
 
 import "./App.css";
+import "./css/ItemSpraysCards.css";
 
 function ItemSprays() {
-  const defaultItem = {
-    uuid: "3d2bcfc5-442b-812e-3c08-9180d6b36077",
-    displayName: "Caught on Camera Spray",
-    category: null,
-    displayIcon:
-      "https://media.valorant-api.com/sprays/3d2bcfc5-442b-812e-3c08-9180d6b36077/displayicon.png",
-    fullIcon:
-      "https://media.valorant-api.com/sprays/3d2bcfc5-442b-812e-3c08-9180d6b36077/fullicon.png",
-    fullTransparentIcon:
-      "https://media.valorant-api.com/sprays/3d2bcfc5-442b-812e-3c08-9180d6b36077/fulltransparenticon.png",
-    assetPath:
-      "ShooterGame/Content/Personalization/Sprays/Act1_2_BP/CaughtOnCamera/CaughtOnCamera_PrimaryAsset",
-    levels: [
-      {
-        uuid: "20d547a4-4ec8-c9ef-dd9d-1c8b74d0e6f7",
-        sprayLevel: 1,
-        displayName: "Caught on Camera Spray",
-        displayIcon:
-          "https://media.valorant-api.com/spraylevels/20d547a4-4ec8-c9ef-dd9d-1c8b74d0e6f7/displayicon.png",
-        assetPath:
-          "ShooterGame/Content/Personalization/Sprays/Act1_2_BP/CaughtOnCamera/CaughtOnCamera_Level1_PrimaryAsset",
-      },
-    ],
+  //STATES
+  const [sprays, setSprays] = useState([]);
+  const [IsSpraysLoaded, setSpraysLoaded] = useState(false);
+
+  const [item, setItem] = useState([]);
+  const [IsItemLoaded, setItemLoaded] = useState(false);
+
+  const [isLoaded, setLoaded] = useState(false);
+  const [currentItemID, setCurrentItemID] = useState();
+
+  const [transform, setTransform] = useState([0, 0]);
+  const [clickPos, setClickPos] = useState([]);
+
+  const transformPreview = (data) => {
+    let divPosX = data.target.x;
+    let divPosY = data.target.y;
+
+    let divHeight = data.target.height;
+    let divWidth = data.target.width;
+
+    let mousePosX = data.pageX;
+    let mousePosY = data.pageY;
+
+    let midX = divWidth / 2 + divPosX;
+    let midY = divHeight / 2 + divPosY;
+
+    let X =  ((clickPos[0] - mousePosX) / 5) ; //(mousePosX - midX) / -4 *
+    let Y =  ((clickPos[1] - mousePosY) / 5) ; //(mousePosY - midY) / 4 *
+
+    
+    //max 45deg
+    if(X > 45){X = 45}
+    if(X < -45){X = -45}
+    if(Y > 45){Y = 45}
+    if(Y < -45){Y = -45}
+
+    setTransform([X, -Y]);
+
   };
 
-  const [sprays, setSprays] = useState([]);
-  const [page, setPage] = useState(0);
-  const [item, setItem] = useState([defaultItem]);
-  const [isLoaded, setLoaded] = useState(false);
+  const transFormCSS = {
+    transform: `rotateX(${transform[0]}deg) rotateY(${transform[1]}deg) rotateZ(${(transform[0]+transform[1])/-2}deg)`,
+  };
 
   const fetchSprays = async () => {
     const data = await fetch("https://valorant-api.com/v1/sprays");
     const spraysRaw = await data.json();
     setSprays(spraysRaw.data);
-    setTimeout(() => setLoaded(true), 800);
+    setSpraysLoaded(true);
   };
-
-  const setCopy = () => {
-    const backupArray = sprays;
-    return backupArray;
-  };
-
-  const backupArray = setCopy();
 
   const checkIsNull = (data) => {
     if (data === null) {
@@ -56,57 +64,168 @@ function ItemSprays() {
     }
   };
 
+  const setSelectedSprayStyle = (data) => {
+    if (data.uuid == item.uuid) {
+      return {
+        background: "rgba(255, 255, 255, 0.8)",
+        border: "2px solid darkgrey",
+        
+      };
+    } else {
+      return;
+    }
+  };
+
   useEffect(() => {
     fetchSprays();
-    setItem(defaultItem);
   }, []);
 
+  useEffect(() => {
+    if (IsSpraysLoaded) {
+      let rnd = Math.floor(Math.random() * sprays.length);
+      setItem(sprays[rnd]);
+      setItemLoaded(true);
+      setCurrentItemID(rnd);
+    }
+  }, [IsSpraysLoaded]);
+
+  useEffect(() => {
+    if (IsItemLoaded) {
+      setTimeout(() => setLoaded(true), 800);
+    }
+  }, [IsItemLoaded]);
+
+  const setFirstItem = (data) => {
+    if (data <= 0) {
+      return 0;
+    } else if (data >= sprays.length - 13) {
+      return sprays.length - 13;
+    } else {
+      return data;
+    }
+  };
+
+  const setLastItem = (data) => {
+    if (data > sprays.length) {
+      return sprays.length;
+    } else if (data < 13) {
+      return 13;
+    } else {
+      return data;
+    }
+  };
+
+  const setCurrent = (data, index) => {
+    setItem(data);
+    let newItemId = currentItemID + (index - 6);
+    if (newItemId > sprays.length) {
+      setCurrentItemID(sprays.length - 1);
+    } else if (newItemId < 0) {
+      setCurrentItemID(0);
+    } else {
+      setCurrentItemID(newItemId);
+    }
+  };
+
+  const mouseWheelSelector = (e) =>{
+    if(e.deltaY > 0){
+      if (currentItemID == sprays.length-1) {
+        setCurrentItemID(0);
+        setItem(sprays[0]);
+      } else {
+        setCurrentItemID(currentItemID + 1);
+        setItem(sprays[currentItemID + 1]);
+      }
+    }
+    else{
+      if(e.deltaY < 0){
+        if (currentItemID == 0) {
+          setCurrentItemID(sprays.length - 1);
+          setItem(sprays[sprays.length - 1]);
+        } else {
+          setCurrentItemID(currentItemID - 1);
+          setItem(sprays[currentItemID - 1]);
+        }
+      }
+    }
+  }
 
   if (isLoaded) {
     return (
-      <div className="sprays">
+      <div className="sprays" onWheel={(e) => {mouseWheelSelector(e)}}>
         <div className="spray-info">
           <div className="spray-name">{item.displayName}</div>
-          <div className="spray-pic">
+          <div
+            className="spray-pic"
+            onMouseDown={(e) => {
+              setClickPos([e.pageX, e.pageY])
+            }}
+            onMouseMove={(e) => {
+              transformPreview(e);
+            }}
+            onMouseLeave={(e) => {
+              setTransform([0, 0]);
+              setClickPos([e.target.x + (e.target.width/2), e.target.y + (e.target.height/2)]);
+            }}
+            onMouseUp={(e) => {
+              setTransform([0, 0]);
+              setClickPos([e.target.x + (e.target.width/2), e.target.y + (e.target.height/2)]);
+            }}
+            style={transFormCSS}
+          >
             <img
               key={item.displayName}
-              src={checkIsNull(item.fullTransparentIcon)}
+              src={checkIsNull(item.fullTransparentIcon)
+              }
             />
           </div>
         </div>
-        <div key={"page" + page} className="spray-list">
-          {sprays.slice([page * 13], [(page + 1) * 13]).map((spray) => (
-            <div className="spray-icon" onClick={() => setItem(spray)}>
-              <img src={spray.displayIcon} />
-            </div>
-          ))}
+        <div key={currentItemID + "_list"} className="spray-list">
+          {sprays
+            .slice(
+              [setFirstItem(currentItemID - 6)],
+              [setLastItem(currentItemID + 7)]
+            )
+            .map((spray, index) => (
+              <div
+                className="spray-icon"
+                style={setSelectedSprayStyle(spray)}
+                onClick={() => {
+                  setCurrent(spray, index);
+                }}
+              >
+                <img src={spray.displayIcon} />
+              </div>
+            ))}
         </div>
 
         <div className="page-control">
           <div
             className="page-back"
             onClick={() => {
-              setSprays(backupArray);
-              if (page > 0) {
-                setPage(page - 1);
+              if (currentItemID == 0) {
+                setCurrentItemID(sprays.length - 1);
+                setItem(sprays[sprays.length - 1]);
               } else {
-                setPage(0);
+                setCurrentItemID(currentItemID - 1);
+                setItem(sprays[currentItemID - 1]);
               }
             }}
           >
             -
           </div>
           <div className="page-number">
-            {Math.round(page + 1)} / {Math.round(sprays.length / 13)}
+            {currentItemID + 1} / {sprays.length}
           </div>
           <div
             className="page-next"
             onClick={() => {
-              setSprays(backupArray);
-              if ((page + 1) * 13 > sprays.length) {
-                setPage(page);
+              if (currentItemID == sprays.length - 1) {
+                setCurrentItemID(0);
+                setItem(sprays[0]);
               } else {
-                setPage(page + 1);
+                setCurrentItemID(currentItemID + 1);
+                setItem(sprays[currentItemID + 1]);
               }
             }}
           >

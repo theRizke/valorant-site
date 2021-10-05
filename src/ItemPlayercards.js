@@ -52,9 +52,9 @@ function ItemPlayercards() {
           <div className="card-pic">
             <img src={item.largeArt} />
           </div>
-          <div className="card-pic-mini">
+          {/* <div className="card-pic-mini">
             <img src={item.wideArt} />
-          </div>
+          </div> */}
         </div>
         <div key={page + "page"} className="card-list">
           {playercards.slice(page * 13, (page + 1) * 13).map((card) => (
