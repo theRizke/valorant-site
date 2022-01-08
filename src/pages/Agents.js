@@ -1,10 +1,10 @@
 import React from 'react';
 
 
-import './App.css';
-import './css/agents.css';
+import '../App.css';
+import '../css/agents.css';
 
-import AgentsList from './AgentsList';
+import AgentsList from './agents/AgentsList';
 
 
 

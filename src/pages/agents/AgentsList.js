@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
-import Agent from "./model/Agent";
+import Agent from "../../model/Agent";
 import AgentInfo from "./AgentInfo";
-
-
 import Loader from "react-loader-spinner";
-import "./App.css";
-import "./css/agents.css";
+
+import "../../App.css";
+import "../../css/agents.css";
 
 
 function AgentsList() {
@@ -22,7 +21,6 @@ function AgentsList() {
 
     const agentObjects = new Array;
     agentsRaw.data.forEach(agent => {
-      if (agent.uuid != "ded3520f-4264-bfed-162d-b080e2abccf9")
         agentObjects.push(new Agent(agent))
     });
 

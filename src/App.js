@@ -5,8 +5,8 @@ import './App.css';
 
 import Nav from './Nav';
 import Home from './Home';
-import Agents from './Agents';
-import Maps from './Maps';
+import Agents from './pages/Agents';
+import Maps from './pages/Maps';
 import Weapons from './Weapons';
 import Items from './Items';
 import ItemSprays from './ItemSprays';
@@ -14,8 +14,6 @@ import ItemBundles from './ItemBundles';
 import ItemBuddies from './ItemBuddies';
 import ItemPlayercards from './ItemPlayercards';
 import ItemSkins from './ItemSkins';
-
-import AgentInfo from './Items';
 
 
 function App() {

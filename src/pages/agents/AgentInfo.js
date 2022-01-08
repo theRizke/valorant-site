@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import Loader from "react-loader-spinner";
 
-import './App.css';
-import './css/agents.css';
+import "../../App.css";
+import "../../css/agents.css";
 import AgentAbilities from './AgentAbilities';
 
 
@@ -45,7 +45,7 @@ function AgentInfo(props) {
   }
   else {
     return (
-      <div className="loading-div">
+      <div className="">
         <Loader type="Oval" color="#FFF" height={150} width={150} />
       </div>
     );

@@ -21,8 +21,6 @@
   background-repeat: no-repeat !important;
   background-position: top, bottom;
   background-size: cover;
-  -webkit-animation-name: map-picture-move;
-          animation-name: map-picture-move;
   -webkit-animation-duration: 3s;
           animation-duration: 3s;
   -webkit-animation-delay: 0s;

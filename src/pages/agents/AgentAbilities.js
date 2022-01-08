@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from "react";
-import "./App.css";
+import "../../App.css";
 
 
 function AgentAbility(props) {
   const ability = props.data;
+  const [abilityDESC, setAbilityDESC] = useState(ability[0]);
 
-  const [abilityDESC, setabilityDESC] = useState(ability[0]);
+  console.log(ability);
 
   useEffect(() => {
-    setabilityDESC(ability[0]);
+    setAbilityDESC(ability[0]);
   }, [ability[0]]);
 
   const selectedAbilityStyle = (data) => {
@@ -19,13 +20,8 @@ function AgentAbility(props) {
     }
   };
 
-  const setAbilityIcon = (data) => {
-    if (data.slot == "Passive") {
-      return "/noabicon.png" }
-     else {
-      return  data.displayIcon ;
-    }
-  };
+
+
 
   
 
@@ -35,16 +31,16 @@ function AgentAbility(props) {
         key={ability[0].slot + ability[1].displayIcon}
         className="all-ability"
       >
-        {ability.map((ability) => (
+        {ability.filter(ability => ability.slot != "Passive").map((ability) => (
           <div
             className="ability"
             onClick={() => {
-              setabilityDESC(ability);
+              setAbilityDESC(ability);
             }}
           >
             <img
               className="ab-icon"
-              src={setAbilityIcon(ability)}
+              src={ability.displayIcon}
               title={ability.displayName}
               alt={ability.displayName}
               style={selectedAbilityStyle(ability)}
@@ -54,7 +50,6 @@ function AgentAbility(props) {
       </div>
       <div key={abilityDESC.displayName} className="ability-desc">
         <div className="ability-name">{abilityDESC.displayName}</div>
-
         <div className="ability-description">{abilityDESC.description}</div>
       </div>
     </div>
