@@ -1,26 +1,32 @@
 import React, { useState, useEffect } from "react";
-import Loader from "react-loader-spinner";
-
-import "./App.css";
-import "./css/agents.css";
+import Agent from "./model/Agent";
 import AgentInfo from "./AgentInfo";
 
+
+import Loader from "react-loader-spinner";
+import "./App.css";
+import "./css/agents.css";
+
+
 function AgentsList() {
-  //AGENTLIST
+
   const [agents, setAgents] = useState([]);
   const [isAgentsLoaded, setAgentsLoaded] = useState(false);
-
   const [selectedAgent, selectAgent] = useState();
   const [isDefaultAgentSelected, setDefaultAgentSelected] = useState(false);
-
   const [isAllLoaded, setAllLoaded] = useState(false);
 
   const fetchItems = async () => {
     const data = await fetch("https://valorant-api.com/v1/agents");
     const agentsRaw = await data.json();
-    const agentsArray = [agentsRaw.data];
-    agentsArray[0].splice(5, 1);
-    setAgents(agentsArray[0]);
+
+    const agentObjects = new Array;
+    agentsRaw.data.forEach(agent => {
+      if (agent.uuid != "ded3520f-4264-bfed-162d-b080e2abccf9")
+        agentObjects.push(new Agent(agent))
+    });
+
+    setAgents(agentObjects);
     setAgentsLoaded(true);
   };
 
@@ -42,37 +48,38 @@ function AgentsList() {
     }
   }, [isDefaultAgentSelected]);
 
-  const selectedAgentStyle = (data) =>{
-    if(selectedAgent.uuid == data.uuid)
-    {
-      return ({background: "rgba(255, 255, 255, 0.8)",
-              border: "2px solid grey"})
+
+  const selectedAgentStyle = (agent) => {
+    if (selectedAgent.data.uuid == agent.data.uuid) {
+      return ({
+        background: "rgba(255, 255, 255, 0.8)",
+        border: "2px solid grey"
+      })
+    }
+    else { return; }
   }
-  else{return;}
-}
 
   if (isAllLoaded) {
     return (
       <div className="agent-site">
         <div class="agent-data">
-         <AgentInfo data={selectedAgent} />
+          <AgentInfo data={selectedAgent.data} />
         </div>
 
         <div className="agent-list">
-          {agents.map((agent) => (
+          {agents.filter(agent => agent.visible).map((agent) => (
             <div
-              key={agent.uuid}
+              key={agent.data.uuid}
               className="icon"
               onClick={() => {
                 selectAgent(agent);
               }}
-              
             >
               <img
                 className="agent-icon"
-                src={agent.displayIcon}
-                alt={agent.displayName}
-                title={agent.displayName}
+                src={agent.data.displayIcon}
+                alt={agent.data.displayName}
+                title={agent.data.displayName}
                 style={selectedAgentStyle(agent)}
               ></img>
             </div>

@@ -8,53 +8,48 @@ import AgentAbilities from './AgentAbilities';
 
 function AgentInfo(props) {
 
-  const [isLoaded, setLoaded] = useState();
+  const [isLoaded, setLoaded] = useState(false);
+  const agent = props.data;
 
-  useEffect(()=>{
-    setLoaded(false)
-  },[])
-  
-
-  setTimeout(()=>{
+  setTimeout(() => {
     setLoaded(true)
   }, 500);
 
 
-
-  if(isLoaded){
+  if (isLoaded) {
     return (
-    
-    <div key={props.data.displayName} className="agent-data">
-      <div className="left">
-        <div  className="character-name">
+      <div key={agent.displayName} className="agent-data">
+        <audio src={agent.voiceLine.mediaList[0].wave} autoPlay></audio>
+        <div className="left">
+          <div className="character-name">
 
-          <div className="character-role">
-          <img className="role-icon" src={props.data.role.displayIcon}></img>
+            <div className="character-role">
+              <img className="role-icon" src={agent.role.displayIcon}></img>
+            </div>
+            <div className="character-displayname">
+              {agent.displayName}
+            </div>
           </div>
-          <div  className="character-displayname">
-          {props.data.displayName}
+          <div key={agent.description} className="character-description">
+            {agent.description}
+          </div>
+          <AgentAbilities data={agent.abilities} />
+        </div>
+        <div className="right">
+          <div className="character-pic">
+            <img key={agent.displayName} className="bust-portrait" src={agent.bustPortrait}></img>
           </div>
         </div>
-      <div key={props.data.description} className="character-description">
-        {props.data.description}
       </div>
-        <AgentAbilities data={props.data.abilities}/>
+    );
+  }
+  else {
+    return (
+      <div className="loading-div">
+        <Loader type="Oval" color="#FFF" height={150} width={150} />
       </div>
-      <div className="right">
-        <div className="character-pic">
-          <img key={props.data.displayName} className="bust-portrait" src={props.data.bustPortrait}></img>
-        </div>
-      </div>
-    </div>
-  );
-}
-else {
-  return (
-    <div className="loading-div">
-      <Loader type="Oval" color="#FFF" height={150} width={150} />
-    </div>
-  );
-}
+    );
+  }
 
 }
 export default AgentInfo;
