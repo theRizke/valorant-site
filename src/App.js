@@ -4,16 +4,16 @@ import { HashRouter as Router, Switch, Route } from 'react-router-dom';
 import './App.css';
 
 import Nav from './Nav';
-import Home from './Home';
+import Home from './pages/Home';
 import Agents from './pages/Agents';
 import Maps from './pages/Maps';
-import Weapons from './Weapons';
-import Items from './Items';
-import ItemSprays from './ItemSprays';
-import ItemBundles from './ItemBundles';
-import ItemBuddies from './ItemBuddies';
-import ItemPlayercards from './ItemPlayercards';
-import ItemSkins from './ItemSkins';
+import Weapons from './pages/Weapons';
+import Items from './pages/Items';
+import ItemSprays from './pages/items/ItemSprays';
+import ItemBundles from './pages/items/ItemBundles';
+import ItemBuddies from './pages/items/ItemBuddies';
+import ItemPlayercards from './pages/items/ItemPlayercards';
+import ItemSkins from './pages/items/ItemSkins';
 
 
 function App() {

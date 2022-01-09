@@ -21,7 +21,6 @@ function Maps() {
     for (const map of mapsRaw.data) {
       mapData.push(new Map(map))
     }
-    console.log(mapData)
     setMaps(mapData);
   };
 
