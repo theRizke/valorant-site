@@ -1,17 +1,17 @@
 @font-face {
   font-family: Valorant;
-  src: url(./Valorant-Font.ttf);
+  src: url(./assets/fonts/Valorant-Font.ttf);
 }
 
 @font-face {
   font-family: Tungsten;
-  src: url(./Tungsten-Bold.ttf);
+  src: url(./assets/fonts/Tungsten-Bold.ttf);
 }
 
 .body {
   /* background: linear-gradient(to top, #839aff 0%, #243a5d 100%); */
   /* background: linear-gradient(to bottom, #6e529d 0%,#583aff 100%); */
-  background-image: url('./bg.jpg');
+  background-image: url('./assets/bg.jpg');
   height: 100vh;
   margin: 0;
   overflow-x: hidden;

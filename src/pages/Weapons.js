@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from 'react-router-dom';
 import Loader from "react-loader-spinner";
 
-import "../button.css";
+import "../css/button.css";
 import "../App.css";
 import "../css/weapons.css";
 
