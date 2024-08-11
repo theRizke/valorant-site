@@ -19,7 +19,7 @@ function AgentInfo(props) {
   if (isLoaded) {
     return (
       <div key={agent.displayName} className="agent-data">
-        <audio src={agent.voiceLine.mediaList[0].wave} autoPlay></audio>
+        <audio src={agent.voiceLine?.mediaList[0].wave} autoPlay></audio>
         <div className="left">
           <div className="character-name">
 
